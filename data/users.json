@@ -1,0 +1,20 @@
+[
+  {
+    "type": "Admin",
+    "id": 1,
+    "fullName": "Адміністратор",
+    "phone": "+380000000000",
+    "login": "admin",
+    "role": "ADMIN",
+    "passwordHash": "admin"
+  },
+  {
+    "type": "Customer",
+    "id": 2,
+    "fullName": "User",
+    "phone": "example@gmail.com",
+    "login": "user",
+    "role": "CUSTOMER",
+    "passwordHash": "user"
+  }
+]
