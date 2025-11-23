@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "orderDate": "2025-11-23",
+    "status": "NEW",
+    "customerId": 2,
+    "items": [
+      {
+        "productId": 4,
+        "quantity": 1,
+        "priceAtPurchase": 1600.0
+      },
+      {
+        "productId": 5,
+        "quantity": 1,
+        "priceAtPurchase": 1200.0
+      },
+      {
+        "productId": 3,
+        "quantity": 1,
+        "priceAtPurchase": 15000.0
+      }
+    ],
+    "totalPrice": 17800.0
+  }
+]

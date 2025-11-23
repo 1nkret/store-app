@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane fx:controller="com.example.store.StoreController"
+            xmlns:fx="http://javafx.com/fxml" prefHeight="500" prefWidth="700">
+    <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
+
+    <top>
+        <VBox spacing="10">
+            <HBox spacing="10" alignment="center_left">
+                <Label text="Категорія:"/>
+                <ComboBox fx:id="categoryComboBox" prefWidth="200"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <VBox spacing="10">
+            <Label text="Товари:"/>
+            <ListView fx:id="productListView" VBox.vgrow="ALWAYS"/>
+            <HBox spacing="10" alignment="center_left">
+                <Button text="Додати до кошика" onAction="#handleAddToCartAction"/>
+            </HBox>
+        </VBox>
+    </center>
+
+    <right>
+        <VBox spacing="10" prefWidth="250">
+            <padding><Insets left="10"/></padding>
+            <Label text="Кошик:"/>
+            <ListView fx:id="cartListView" VBox.vgrow="ALWAYS"/>
+            <Label fx:id="totalPriceLabel" text="Загалом: 0.00 грн"/>
+            <Button text="Оформити замовлення" onAction="#handleCheckoutAction" maxWidth="Infinity"/>
+            <Text fx:id="actionTarget"/>
+        </VBox>
+    </right>
+</BorderPane>

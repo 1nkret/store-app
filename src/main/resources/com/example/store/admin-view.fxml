@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane fx:controller="com.example.store.AdminController"
+            xmlns:fx="http://javafx.com/fxml" prefHeight="700" prefWidth="900">
+    <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
+
+    <top>
+        <VBox spacing="10">
+            <Label text="Панель адміністратора" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+            <HBox spacing="10">
+                <Button text="До звітів" onAction="#handleGoToReports"/>
+            </HBox>
+            <Separator/>
+        </VBox>
+    </top>
+
+    <center>
+        <TabPane tabClosingPolicy="UNAVAILABLE">
+            <!-- Вкладка управления товарами -->
+            <Tab text="Управління товарами">
+                <BorderPane>
+                    <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
+
+                    <left>
+                        <VBox spacing="10" prefWidth="400">
+                            <padding><Insets right="10"/></padding>
+                            <Label text="Список товарів:"/>
+                            <ListView fx:id="productListView" VBox.vgrow="ALWAYS"/>
+                        </VBox>
+                    </left>
+
+                    <center>
+                        <VBox spacing="10">
+                            <padding><Insets left="10"/></padding>
+                            <Label text="Редагування товару:" style="-fx-font-weight: bold;"/>
+
+                            <GridPane hgap="10" vgap="10">
+                                <Label text="Назва:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                                <TextField fx:id="productNameField" GridPane.columnIndex="1" GridPane.rowIndex="0" prefWidth="300"/>
+
+                                <Label text="Опис:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                                <TextArea fx:id="productDescField" GridPane.columnIndex="1" GridPane.rowIndex="1" prefWidth="300" prefHeight="80"/>
+
+                                <Label text="Ціна:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                                <TextField fx:id="productPriceField" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+                                <Label text="Кількість:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                                <TextField fx:id="productStockField" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+                                <Label text="Категорія:" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+                                <ComboBox fx:id="productCategoryCombo" GridPane.columnIndex="1" GridPane.rowIndex="4" prefWidth="300"/>
+                            </GridPane>
+
+                            <HBox spacing="10">
+                                <Button text="Додати" onAction="#handleAddProduct" style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+                                <Button text="Оновити" onAction="#handleUpdateProduct" style="-fx-background-color: #2196F3; -fx-text-fill: white;"/>
+                                <Button text="Видалити" onAction="#handleDeleteProduct" style="-fx-background-color: #f44336; -fx-text-fill: white;"/>
+                                <Button text="Очистити" onAction="#handleClearProductFields"/>
+                            </HBox>
+
+                            <Text fx:id="productActionTarget"/>
+                        </VBox>
+                    </center>
+                </BorderPane>
+            </Tab>
+
+            <!-- Вкладка управления категориями -->
+            <Tab text="Управління категоріями">
+                <BorderPane>
+                    <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
+
+                    <left>
+                        <VBox spacing="10" prefWidth="400">
+                            <padding><Insets right="10"/></padding>
+                            <Label text="Список категорій:"/>
+                            <ListView fx:id="categoryListView" VBox.vgrow="ALWAYS"/>
+                        </VBox>
+                    </left>
+
+                    <center>
+                        <VBox spacing="10">
+                            <padding><Insets left="10"/></padding>
+                            <Label text="Редагування категорії:" style="-fx-font-weight: bold;"/>
+
+                            <GridPane hgap="10" vgap="10">
+                                <Label text="Назва:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                                <TextField fx:id="categoryNameField" GridPane.columnIndex="1" GridPane.rowIndex="0" prefWidth="300"/>
+                            </GridPane>
+
+                            <HBox spacing="10">
+                                <Button text="Додати" onAction="#handleAddCategory" style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+                                <Button text="Оновити" onAction="#handleUpdateCategory" style="-fx-background-color: #2196F3; -fx-text-fill: white;"/>
+                                <Button text="Видалити" onAction="#handleDeleteCategory" style="-fx-background-color: #f44336; -fx-text-fill: white;"/>
+                                <Button text="Очистити" onAction="#handleClearCategoryFields"/>
+                            </HBox>
+
+                            <Text fx:id="categoryActionTarget"/>
+                        </VBox>
+                    </center>
+                </BorderPane>
+            </Tab>
+        </TabPane>
+    </center>
+</BorderPane>

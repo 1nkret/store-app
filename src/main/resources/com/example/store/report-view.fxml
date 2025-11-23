@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:controller="com.example.store.ReportController"
+            xmlns:fx="http://javafx.com/fxml" prefHeight="600" prefWidth="800">
+    <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
+
+    <top>
+        <VBox spacing="10">
+            <Label text="Звіти та Аналітика" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+            <Separator/>
+            <HBox spacing="10" alignment="center_left">
+                <Label text="Дата:"/>
+                <DatePicker fx:id="datePicker"/>
+                <Label text="Назва товару:"/>
+                <TextField fx:id="goodsNameField" promptText="Введіть назву товару"/>
+            </HBox>
+            <Separator/>
+        </VBox>
+    </top>
+
+    <center>
+        <VBox spacing="10">
+            <Label text="Доступні запити:"/>
+            <TilePane hgap="10" vgap="10" prefColumns="2">
+                <Button text="1. Список користувачів" onAction="#handleQuery1" prefWidth="250"/>
+                <Button text="2. Замовлення за датою" onAction="#handleQuery2" prefWidth="250"/>
+                <Button text="3. Середня вартість замовлення" onAction="#handleQuery3" prefWidth="250"/>
+                <Button text="4. Найпопулярніший товар" onAction="#handleQuery4" prefWidth="250"/>
+                <Button text="5. Найактивніший покупець" onAction="#handleQuery5" prefWidth="250"/>
+                <Button text="6. Топ-3 категорії" onAction="#handleQuery6" prefWidth="250"/>
+            </TilePane>
+
+            <Separator/>
+
+            <Label text="Результати:"/>
+            <TextArea fx:id="outputArea" editable="false" VBox.vgrow="ALWAYS"/>
+        </VBox>
+    </center>
+
+    <bottom>
+        <HBox spacing="10" alignment="center_left">
+            <padding><Insets top="10"/></padding>
+            <Button text="Назад до панелі адміністратора" onAction="#handleBackToStore"/>
+        </HBox>
+    </bottom>
+</BorderPane>
