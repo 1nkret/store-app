@@ -22,5 +22,61 @@
       }
     ],
     "totalPrice": 17800.0
+  },
+  {
+    "id": 2,
+    "orderDate": "2025-11-23",
+    "status": "NEW",
+    "customerId": 2,
+    "items": [
+      {
+        "productId": 3,
+        "quantity": 5,
+        "priceAtPurchase": 15000.0
+      }
+    ],
+    "totalPrice": 75000.0
+  },
+  {
+    "id": 3,
+    "orderDate": "2025-11-23",
+    "status": "NEW",
+    "customerId": 2,
+    "items": [
+      {
+        "productId": 4,
+        "quantity": 15,
+        "priceAtPurchase": 1600.0
+      }
+    ],
+    "totalPrice": 24000.0
+  },
+  {
+    "id": 4,
+    "orderDate": "2025-11-23",
+    "status": "NEW",
+    "customerId": 2,
+    "items": [
+      {
+        "productId": 1,
+        "quantity": 1,
+        "priceAtPurchase": 100000.0
+      }
+    ],
+    "totalPrice": 100000.0
+  },
+  {
+    "id": 5,
+    "orderDate": "2025-11-23",
+    "status": "NEW",
+    "customerId": 2,
+    "items": [
+      {
+        "productId": 3,
+        "quantity": 2,
+        "priceAtPurchase": 15000.0
+      }
+    ],
+    "totalPrice": 30000.0
   }
 ]

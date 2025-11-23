@@ -15,8 +15,6 @@
             <HBox spacing="10" alignment="center_left">
                 <Label text="Дата:"/>
                 <DatePicker fx:id="datePicker"/>
-                <Label text="Назва товару:"/>
-                <TextField fx:id="goodsNameField" promptText="Введіть назву товару"/>
             </HBox>
             <Separator/>
         </VBox>
@@ -45,6 +43,8 @@
         <HBox spacing="10" alignment="center_left">
             <padding><Insets top="10"/></padding>
             <Button text="Назад до панелі адміністратора" onAction="#handleBackToStore"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button text="Вийти" onAction="#handleLogout"/>
         </HBox>
     </bottom>
 </BorderPane>

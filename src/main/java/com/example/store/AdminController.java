@@ -41,7 +41,11 @@ public class AdminController {
                 productDescField.setText(newVal.getDescription());
                 productPriceField.setText(String.valueOf(newVal.getPrice()));
                 productStockField.setText(String.valueOf(newVal.getStock()));
-                productCategoryCombo.getSelectionModel().select(newVal.getCategory());
+                if (newVal.getCategory() != null) {
+                    productCategoryCombo.getSelectionModel().select(newVal.getCategory());
+                } else {
+                    productCategoryCombo.getSelectionModel().clearSelection();
+                }
             }
         });
 
@@ -263,6 +267,20 @@ public class AdminController {
             stage.setTitle("Звіти");
         } catch (IOException e) {
             productActionTarget.setText("Помилка переходу до звітів.");
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void handleLogout() {
+        try {
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("login-view.fxml"));
+            Scene scene = new Scene(loader.load());
+            Stage stage = (Stage) productListView.getScene().getWindow();
+            stage.setScene(scene);
+            stage.setTitle("Вхід до системи");
+        } catch (IOException e) {
+            productActionTarget.setText("Помилка виходу з системи.");
             e.printStackTrace();
         }
     }

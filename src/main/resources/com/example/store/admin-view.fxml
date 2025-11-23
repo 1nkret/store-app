@@ -14,6 +14,8 @@
             <Label text="Панель адміністратора" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
             <HBox spacing="10">
                 <Button text="До звітів" onAction="#handleGoToReports"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button text="Вийти" onAction="#handleLogout"/>
             </HBox>
             <Separator/>
         </VBox>

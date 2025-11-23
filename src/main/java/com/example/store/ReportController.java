@@ -12,7 +12,6 @@ import java.util.stream.Collectors;
 public class ReportController {
     @FXML private TextArea outputArea;
     @FXML private DatePicker datePicker;
-    @FXML private TextField goodsNameField;
 
     private final QueryService queryService = QueryService.getInstance();
 
@@ -73,6 +72,20 @@ public class ReportController {
             stage.setTitle("Панель адміністратора");
         } catch (IOException e) {
             outputArea.setText("Помилка повернення до панелі адміністратора.");
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void handleLogout() {
+        try {
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("login-view.fxml"));
+            Scene scene = new Scene(loader.load());
+            Stage stage = (Stage) outputArea.getScene().getWindow();
+            stage.setScene(scene);
+            stage.setTitle("Вхід до системи");
+        } catch (IOException e) {
+            outputArea.setText("Помилка виходу з системи.");
             e.printStackTrace();
         }
     }

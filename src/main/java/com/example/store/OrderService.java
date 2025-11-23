@@ -82,9 +82,8 @@ public class OrderService {
 
         for (OrderItem item : items) {
             Product product = catalogService.getProductById(item.getProductId());
-            product.setStock(product.getStock() - item.getQuantity());
+            catalogService.updateProductStock(item.getProductId(), product.getStock() - item.getQuantity());
         }
-        catalogService.saveData();
 
         int nextId = orders.stream().mapToInt(Order::getId).max().orElse(0) + 1;
         Order newOrder = new Order(nextId, customer, items);

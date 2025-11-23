@@ -14,6 +14,8 @@
             <HBox spacing="10" alignment="center_left">
                 <Label text="Категорія:"/>
                 <ComboBox fx:id="categoryComboBox" prefWidth="200"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button text="Вийти" onAction="#handleLogout"/>
             </HBox>
         </VBox>
     </top>

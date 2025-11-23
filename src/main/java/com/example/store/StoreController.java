@@ -30,6 +30,27 @@ public class StoreController {
     @FXML
     public void initialize() {
         productListView.setItems(products);
+
+        // Добавить отображение описания товара при наведении
+        productListView.setCellFactory(lv -> new ListCell<Product>() {
+            @Override
+            protected void updateItem(Product item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                    setTooltip(null);
+                } else {
+                    setText(item.toString());
+                    if (item.getDescription() != null && !item.getDescription().isEmpty()) {
+                        Tooltip tooltip = new Tooltip(item.getDescription());
+                        tooltip.setWrapText(true);
+                        tooltip.setMaxWidth(300);
+                        setTooltip(tooltip);
+                    }
+                }
+            }
+        });
+
         loadCategories();
         loadProducts();
         updateCartView();
@@ -82,7 +103,7 @@ public class StoreController {
         }
 
         if (existingItem != null) {
-            if (selectedProduct.getStock() > existingItem.getQuantity()) {
+            if (selectedProduct.getStock() >= existingItem.getQuantity() + 1) {
                 cartItems.remove(existingItem);
                 cartItems.add(new OrderItem(selectedProduct, existingItem.getQuantity() + 1));
             } else {
@@ -122,6 +143,7 @@ public class StoreController {
 
     private void updateCartView() {
         List<String> cartDisplay = cartItems.stream()
+                .filter(item -> item.getProduct() != null)
                 .map(item -> item.getProduct().getName() + " x " + item.getQuantity() + " (" + String.format("%.2f", item.getPriceAtPurchase() * item.getQuantity()) + " грн)")
                 .collect(Collectors.toList());
         cartListView.setItems(FXCollections.observableArrayList(cartDisplay));
@@ -142,6 +164,20 @@ public class StoreController {
             stage.setTitle("Звіти");
         } catch (IOException e) {
             actionTarget.setText("Помилка переходу до звітів.");
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void handleLogout() {
+        try {
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("login-view.fxml"));
+            Scene scene = new Scene(loader.load());
+            Stage stage = (Stage) actionTarget.getScene().getWindow();
+            stage.setScene(scene);
+            stage.setTitle("Вхід до системи");
+        } catch (IOException e) {
+            actionTarget.setText("Помилка виходу з системи.");
             e.printStackTrace();
         }
     }

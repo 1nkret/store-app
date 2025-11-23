@@ -105,6 +105,14 @@ public class CatalogService {
         Category updated = new Category(id, name);
         categories.add(updated);
         categoryMap.put(id, updated);
+
+        // Обновить ссылки на категорию во всех товарах
+        for (Product p : products) {
+            if (p.getCategoryId() == id) {
+                p.setCategory(updated);
+            }
+        }
+
         saveData();
     }
 
