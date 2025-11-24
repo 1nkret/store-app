@@ -78,5 +78,19 @@
       }
     ],
     "totalPrice": 30000.0
+  },
+  {
+    "id": 6,
+    "orderDate": "2025-11-24",
+    "status": "NEW",
+    "customerId": 2,
+    "items": [
+      {
+        "productId": 4,
+        "quantity": 1,
+        "priceAtPurchase": 1600.0
+      }
+    ],
+    "totalPrice": 1600.0
   }
 ]

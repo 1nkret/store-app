@@ -1,13 +1,5 @@
 [
   {
-    "id": 4,
-    "name": "Atack Shark x3",
-    "description": "Ігрова бездротова миша ",
-    "price": 1600.0,
-    "stock": 20,
-    "categoryId": 2
-  },
-  {
     "id": 5,
     "name": "HyperX Alloy Core",
     "description": "Ігрова дротова клавіатура",
@@ -30,5 +22,13 @@
     "price": 15000.0,
     "stock": 15,
     "categoryId": 1
+  },
+  {
+    "id": 4,
+    "name": "Atack Shark x3",
+    "description": "Ігрова бездротова миша ",
+    "price": 1600.0,
+    "stock": 19,
+    "categoryId": 2
   }
 ]

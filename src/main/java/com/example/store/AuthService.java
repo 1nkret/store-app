@@ -49,8 +49,24 @@ public class AuthService {
         }
 
         if (users.isEmpty()) {
-            Admin admin = new Admin(1, "Адміністратор", "+380000000000", "admin", "admin");
+            Admin admin = new Admin(1, "Адміністратор", "+380000000000", "admin", BaseUser.hashPassword("admin"));
             users.add(admin);
+            saveData();
+        } else {
+            migratePasswords();
+        }
+    }
+
+    private void migratePasswords() {
+        boolean needsSave = false;
+        for (BaseUser user : users) {
+            String hash = user.getPasswordHash();
+            if (hash != null && hash.length() < 64) {
+                user.setPasswordHash(BaseUser.hashPassword(hash));
+                needsSave = true;
+            }
+        }
+        if (needsSave) {
             saveData();
         }
     }
@@ -81,7 +97,7 @@ public class AuthService {
         }
 
         int nextId = users.stream().mapToInt(BaseUser::getId).max().orElse(0) + 1;
-        Customer newUser = new Customer(nextId, fullName, phone, login, password);
+        Customer newUser = new Customer(nextId, fullName, phone, login, BaseUser.hashPassword(password));
         users.add(newUser);
         saveData();
         return newUser;
